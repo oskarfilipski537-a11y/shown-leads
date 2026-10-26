@@ -27,26 +27,36 @@ export const PPR_TRANSLATIONS: Record<'en' | 'sv' | 'es' | 'de', LocalizedPprCon
       },
       {
         num: '02',
+        title: 'Generative Engine Optimisation',
+        desc: 'Get your company ranking on AI tools.'
+      },
+      {
+        num: '03',
         title: 'Ad',
         desc: 'Video that stops the scroll.'
       },
       {
-        num: '03',
+        num: '04',
         title: 'Copy',
         desc: 'Direct response, no fluff.'
       },
       {
-        num: '04',
+        num: '05',
         title: 'Qualify',
         desc: 'Renters and DIYers filtered out.'
       },
       {
-        num: '05',
+        num: '06',
         title: 'Book',
         desc: 'Homeowners pick a slot on your route.'
       },
       {
-        num: '06',
+        num: '07',
+        title: 'Instant Estimator Tool',
+        desc: 'Provide a full estimate in 2 minutes instead of sending it in 2 days.'
+      },
+      {
+        num: '08',
         title: 'Remind',
         desc: 'SMS reminders so 94.6% show up.'
       }
@@ -71,26 +81,36 @@ export const PPR_TRANSLATIONS: Record<'en' | 'sv' | 'es' | 'de', LocalizedPprCon
       },
       {
         num: '02',
+        title: 'Generativ motoroptimering (GEO)',
+        desc: 'Få ditt företag rankat i AI-verktyg.'
+      },
+      {
+        num: '03',
         title: 'Annons',
         desc: 'Video som fångar uppmärksamheten.'
       },
       {
-        num: '03',
+        num: '04',
         title: 'Copy',
         desc: 'Direkt respons, inget fluff.'
       },
       {
-        num: '04',
+        num: '05',
         title: 'Kvalificera',
         desc: 'Hyresgäster och gör-det-självare filtreras bort.'
       },
       {
-        num: '05',
+        num: '06',
         title: 'Boka',
         desc: 'Husägare väljer en tid i din rutt.'
       },
       {
-        num: '06',
+        num: '07',
+        title: 'Instant Estimator Tool',
+        desc: 'Ge en fullständig offert på 2 minuter istället för 2 dagar.'
+      },
+      {
+        num: '08',
         title: 'Påminnelse',
         desc: 'SMS-påminnelser så 94,6% faktiskt kommer.'
       }
@@ -115,26 +135,36 @@ export const PPR_TRANSLATIONS: Record<'en' | 'sv' | 'es' | 'de', LocalizedPprCon
       },
       {
         num: '02',
+        title: 'Optimización de Motores Generativos (GEO)',
+        desc: 'Posiciona tu empresa en herramientas de IA.'
+      },
+      {
+        num: '03',
         title: 'Anuncio',
         desc: 'Vídeo que detiene el scroll.'
       },
       {
-        num: '03',
+        num: '04',
         title: 'Copywriting',
         desc: 'Respuesta directa sin rodeos.'
       },
       {
-        num: '04',
+        num: '05',
         title: 'Cualificación',
         desc: 'Inquilinos y curiosos filtrados.'
       },
       {
-        num: '05',
+        num: '06',
         title: 'Reserva',
         desc: 'Los propietarios eligen un hueco en tu ruta.'
       },
       {
-        num: '06',
+        num: '07',
+        title: 'Instant Estimator Tool',
+        desc: 'Ofrece un presupuesto completo en 2 minutos en vez de tardar 2 días.'
+      },
+      {
+        num: '08',
         title: 'Recordatorio',
         desc: 'SMS automatizados para un 94,6% de asistencia.'
       }
@@ -159,26 +189,36 @@ export const PPR_TRANSLATIONS: Record<'en' | 'sv' | 'es' | 'de', LocalizedPprCon
       },
       {
         num: '02',
+        title: 'Generative Engine Optimisation (GEO)',
+        desc: 'Bringen Sie Ihr Unternehmen in KI-Tools nach oben.'
+      },
+      {
+        num: '03',
         title: 'Werbevideo',
         desc: 'Videos, die sofort die Aufmerksamkeit fesseln.'
       },
       {
-        num: '03',
+        num: '04',
         title: 'Werbetext',
         desc: 'Direktes Angebot ohne Umschweife.'
       },
       {
-        num: '04',
+        num: '05',
         title: 'Qualifizierung',
         desc: 'Mieter und Schnäppchenjäger herausgefiltert.'
       },
       {
-        num: '05',
+        num: '06',
         title: 'Terminbuchung',
         desc: 'Eigentümer wählen ein freies Zeitfenster.'
       },
       {
-        num: '06',
+        num: '07',
+        title: 'Instant Estimator Tool',
+        desc: 'Erstellen Sie ein vollständiges Angebot in 2 Minuten statt 2 Tagen.'
+      },
+      {
+        num: '08',
         title: 'Erinnerung',
         desc: 'Automatische SMS-Erinnerungen für 94,6% Termintreue.'
       }

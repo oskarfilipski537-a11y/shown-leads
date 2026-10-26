@@ -219,12 +219,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Instagram className="w-3.5 h-3.5" />
             </a>
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/oskar-filipski-942360327"
               target="_blank"
               rel="noopener noreferrer"
               className="w-7 h-7 rounded-full flex items-center justify-center text-[#fffdf9]/70 hover:text-[#fffdf9] hover:bg-[#181a22] transition-colors"
-              aria-label="LinkedIn"
-              title="LinkedIn"
+              aria-label="LinkedIn Profile"
+              title="Oskar Filipski LinkedIn"
             >
               <Linkedin className="w-3.5 h-3.5" />
             </a>
@@ -356,11 +356,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span className="text-[11px]">Instagram</span>
                   </a>
                   <a
-                    href="https://www.linkedin.com"
+                    href="https://www.linkedin.com/in/oskar-filipski-942360327"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl bg-[#14151a] border border-[#232733] text-xs font-sans text-[#c9d4e0] hover:text-[#fffdf9] hover:bg-[#1c1f28] transition-colors"
-                    aria-label="LinkedIn"
+                    aria-label="LinkedIn Profile"
                   >
                     <Linkedin className="w-3.5 h-3.5 text-[#fffdf9]" />
                     <span className="text-[11px]">LinkedIn</span>

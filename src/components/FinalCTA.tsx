@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Shield } from 'lucide-react';
 import { AppPage } from '../types';
@@ -12,77 +12,40 @@ interface FinalCTAProps {
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenQuiz, onNavigate }) => {
   const { t } = useLanguage();
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const initCalendly = () => {
-      if ((window as any).Calendly && containerRef.current) {
-        // Avoid adding multiple iframes on re-mounts
-        if (!containerRef.current.querySelector('iframe')) {
-          (window as any).Calendly.initInlineWidget({
-            url: 'https://calendly.com/oskarfipsku/new-meeting?hide_gdpr_banner=1',
-            parentElement: containerRef.current,
-          });
-        }
-      }
-    };
-
-    // Enforce scrolling="no" on injected iframe to prevent internal scrollbars
-    const observer = new MutationObserver(() => {
-      const iframe = containerRef.current?.querySelector('iframe');
-      if (iframe) {
-        iframe.setAttribute('scrolling', 'no');
-        iframe.style.overflow = 'hidden';
-      }
-    });
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current, { childList: true, subtree: true });
-    }
-
-    const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+    // Dynamically load GoHighLevel / LeadConnector form embed script
+    const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.src = 'https://link.msgsndr.com/js/form_embed.js';
+      script.type = 'text/javascript';
       script.async = true;
-      script.onload = initCalendly;
       document.body.appendChild(script);
-    } else {
-      if ((window as any).Calendly) {
-        initCalendly();
-      } else {
-        existingScript.addEventListener('load', initCalendly);
-      }
     }
-
-    return () => {
-      observer.disconnect();
-    };
   }, []);
 
   return (
     <>
-      {/* FINAL CTA / CALENDLY BOOKING */}
+      {/* FINAL CTA / GOHIGHLEVEL BOOKING EMBED */}
       <section
         id="final-cta"
         className="relative py-16 sm:py-24 bg-[#000000] overflow-hidden border-t border-[#1a1a1a]"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
           {/* Card Container (15px radius, 1px #403f3f ash border) */}
-          <div className="relative rounded-[15px] bg-[#141414] border border-[#403f3f] p-4 sm:p-8 lg:p-10 text-center max-w-4xl mx-auto shadow-2xl">
-            {/* White Calendly Embed Frame matching screenshot (no badge, no scroll, logo blocked) */}
-            <div className="w-full max-w-[760px] mx-auto rounded-[10px] overflow-hidden bg-white shadow-md relative">
-              <div className="w-full h-[920px] sm:h-[950px] lg:h-[960px] overflow-hidden relative bg-white">
-                <div 
-                  ref={containerRef}
-                  className="calendly-inline-widget w-full" 
-                  data-url="https://calendly.com/oskarfipsku/new-meeting?hide_gdpr_banner=1" 
-                  data-auto-load="false"
-                  style={{ minWidth: '320px', height: '1000px' }}
-                />
-                {/* Clean Bottom Mask to block any logo / footer branding */}
-                <div className="absolute bottom-0 inset-x-0 h-8 bg-white pointer-events-none z-10" />
-              </div>
+          <div className="relative rounded-[15px] bg-[#141414] border border-[#403f3f] p-4 sm:p-6 lg:p-8 text-center max-w-4xl mx-auto shadow-2xl">
+            {/* Clean LeadConnector / GoHighLevel Embed Container */}
+            <div className="w-full max-w-[800px] mx-auto rounded-[10px] overflow-hidden bg-white shadow-md relative">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/2hz4fNHE7eV6zMYRJY9U"
+                allow="payment"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '760px' }}
+                scrolling="no"
+                id="2hz4fNHE7eV6zMYRJY9U_1792887741783"
+                title="GoHighLevel Booking Widget"
+                className="w-full block"
+              />
             </div>
           </div>
         </div>

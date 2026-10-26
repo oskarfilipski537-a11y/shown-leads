@@ -10,7 +10,9 @@ import {
   ShieldCheck,
   MapPin,
   Sparkles,
-  Info
+  Info,
+  Maximize2,
+  X
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { PPR_TRANSLATIONS } from '../data/pprTranslations';
@@ -61,13 +63,27 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
 
+  // GEO Case Study Lightbox Modal state
+  const [geoModalOpen, setGeoModalOpen] = useState<boolean>(false);
+
   // Pause video if user switches steps
   useEffect(() => {
-    if (activeStep !== 1 && videoRef.current) {
+    if (activeStep !== 2 && videoRef.current) {
       videoRef.current.pause();
       setIsVideoPlaying(false);
     }
   }, [activeStep]);
+
+  // Handle escape key to close GEO lightbox modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setGeoModalOpen(false);
+    };
+    if (geoModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [geoModalOpen]);
 
   const handleTogglePlay = () => {
     if (!videoRef.current) return;
@@ -333,8 +349,8 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
         {/* 2-Column Main Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: 6 Steps Navigation */}
-          <div className="lg:col-span-6 space-y-9 sm:space-y-10 pt-2">
+          {/* Left Column: 8 Steps Navigation */}
+          <div className="lg:col-span-6 space-y-5 sm:space-y-6 pt-1">
             {steps.map((step, idx) => {
               const isActive = activeStep === idx;
               return (
@@ -351,17 +367,17 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                   )}
 
                   {/* Step Number */}
-                  <div className="text-xs font-mono tracking-widest text-[#777777] mb-1">
+                  <div className="text-xs font-mono tracking-widest text-[#777777] mb-0.5">
                     {step.num}
                   </div>
 
                   {/* Step Title */}
-                  <div className="text-2xl sm:text-3xl font-sans font-medium text-white tracking-tight">
+                  <div className="text-xl sm:text-2xl lg:text-[23px] font-sans font-medium text-white tracking-tight leading-snug">
                     {step.title}
                   </div>
 
                   {/* Step Description */}
-                  <div className="text-sm sm:text-base text-[#888888] font-normal mt-1 leading-snug">
+                  <div className="text-xs sm:text-sm text-[#888888] font-normal mt-0.5 leading-snug">
                     {step.desc}
                   </div>
                 </div>
@@ -379,11 +395,13 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
               <div className="relative w-full aspect-[302/676] bg-white rounded-[44px] overflow-hidden flex flex-col justify-between select-none shadow-inner border border-black/10">
                 
                 {/* Dynamic Island and Status Bar Header matching screenshot */}
-                <div className="absolute top-0 left-0 right-0 z-30 pt-3 px-6 pointer-events-none flex items-center justify-between text-black">
+                <div className={`absolute top-0 left-0 right-0 z-30 pt-3 px-6 pointer-events-none flex items-center justify-between transition-colors duration-200 ${
+                  activeStep === 1 ? 'text-white' : 'text-black'
+                }`}>
                   <span className="text-[12px] font-semibold tracking-tight">9:41</span>
                   
                   {/* Dynamic Island pill */}
-                  <div className="w-24 h-6 bg-black rounded-full flex items-center justify-between px-3 -mt-1 shadow-sm">
+                  <div className="w-24 h-6 bg-black rounded-full flex items-center justify-between px-3 -mt-1 shadow-sm border border-white/10">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#111111] flex items-center justify-center">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#1e293b]" />
                     </div>
@@ -391,8 +409,12 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                   </div>
 
                   {/* Battery icon */}
-                  <div className="w-5 h-2.5 border border-black rounded-[4px] p-[1px] flex items-center">
-                    <div className="w-full h-full bg-black rounded-[1px]" />
+                  <div className={`w-5 h-2.5 border rounded-[4px] p-[1px] flex items-center ${
+                    activeStep === 1 ? 'border-white' : 'border-black'
+                  }`}>
+                    <div className={`w-full h-full rounded-[1px] ${
+                      activeStep === 1 ? 'bg-white' : 'bg-black'
+                    }`} />
                   </div>
                 </div>
 
@@ -625,8 +647,75 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                     </div>
                   )}
 
-                  {/* ================= STEP 02: AD (VIDEO AD) ================= */}
+                  {/* ================= STEP 02: GENERATIVE ENGINE OPTIMISATION ================= */}
                   {activeStep === 1 && (
+                    <div className="h-full flex flex-col justify-between pt-10 pb-2 bg-[#000000] animate-fadeIn overflow-hidden text-white select-none">
+                      {/* Company / Tool Header */}
+                      <div className="flex items-center justify-between px-3.5 pb-2 border-b border-white/10 bg-[#0a0a0f]">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#10a37f] to-[#1a7f64] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
+                            AI
+                          </div>
+                          <div>
+                            <div className="text-[11px] font-bold text-white leading-tight flex items-center gap-1.5">
+                              ChatGPT Search
+                              <span className="text-[8px] px-1.5 py-0.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full font-mono font-medium">Rank #1</span>
+                            </div>
+                            <span className="text-[9px] text-gray-400 leading-tight">Generative Engine Optimisation</span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => setGeoModalOpen(true)}
+                          className="flex items-center gap-1 bg-white/10 hover:bg-white/20 text-white/90 border border-white/15 px-2 py-0.5 rounded-full text-[9px] font-medium transition-colors cursor-pointer"
+                          title="View full size"
+                        >
+                          <Maximize2 className="w-2.5 h-2.5" />
+                          <span>Expand</span>
+                        </button>
+                      </div>
+
+                      {/* Image Preview Container - 100% visible width, scrollable so zero text is cut off */}
+                      <div className="relative w-full flex-1 overflow-y-auto overflow-x-hidden no-scrollbar bg-black flex flex-col items-center justify-start py-1">
+                        <div 
+                          onClick={() => setGeoModalOpen(true)}
+                          className="relative w-full group cursor-pointer px-1"
+                        >
+                          <img
+                            src="/geo_chatgpt_ranking.jpg"
+                            alt="Generative Engine Optimisation - Ranking on AI Tools"
+                            className="w-full h-auto object-contain rounded-md select-none transition-transform duration-200 group-hover:scale-[1.01]"
+                            loading="eager"
+                          />
+                          {/* Subtle hint banner */}
+                          <div className="absolute top-2 right-2.5 opacity-90 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            <span className="bg-black/80 backdrop-blur-md text-white text-[8px] px-2 py-0.5 rounded-full border border-white/20 flex items-center gap-1 shadow-md">
+                              <Maximize2 className="w-2.5 h-2.5 text-[#2aff2a]" /> Tap to enlarge
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Bottom Context Pill */}
+                      <div className="px-2.5 pt-1.5 pb-0.5">
+                        <div className="bg-[#111218] rounded-xl p-2 flex items-center justify-between border border-white/10 shadow-xs">
+                          <div>
+                            <div className="text-[10px] font-bold text-white leading-tight">
+                              AI Tool Recommendation
+                            </div>
+                            <div className="text-[8.5px] text-gray-400 leading-tight">
+                              ChatGPT recommends contractor first
+                            </div>
+                          </div>
+                          <span className="text-[9px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                            Ranked Top
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ================= STEP 03: AD (VIDEO AD) ================= */}
+                  {activeStep === 2 && (
                     <div className="h-full flex flex-col justify-between pt-12 pb-3 bg-white animate-fadeIn">
                       {/* Company Header */}
                       <div className="flex items-center justify-between px-4 pb-2.5">
@@ -732,8 +821,8 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                     </div>
                   )}
 
-                  {/* ================= STEP 03: COPY (DIRECT RESPONSE) ================= */}
-                  {activeStep === 2 && (
+                  {/* ================= STEP 04: COPY (DIRECT RESPONSE) ================= */}
+                  {activeStep === 3 && (
                     <div className="h-full flex flex-col justify-between pt-12 pb-5 px-4 animate-fadeIn">
                       <div>
                         {/* Company Header */}
@@ -774,8 +863,8 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                     </div>
                   )}
 
-                  {/* ================= STEP 04: QUALIFY (5-QUESTION FILTER) ================= */}
-                  {activeStep === 3 && (
+                  {/* ================= STEP 05: QUALIFY (5-QUESTION FILTER) ================= */}
+                  {activeStep === 4 && (
                     <div className="h-full flex flex-col justify-between pt-12 pb-4 px-4 animate-fadeIn text-black overflow-y-auto">
                       <div className="space-y-3">
                         <div>
@@ -908,8 +997,8 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                     </div>
                   )}
 
-                  {/* ================= STEP 05: BOOK (CALENDAR) ================= */}
-                  {activeStep === 4 && (
+                  {/* ================= STEP 06: BOOK (CALENDAR) ================= */}
+                  {activeStep === 5 && (
                     <div className="h-full flex flex-col justify-between pt-12 pb-5 px-4 animate-fadeIn text-black">
                       <div className="space-y-4">
                         <div>
@@ -986,8 +1075,59 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
                     </div>
                   )}
 
-                  {/* ================= STEP 06: REMIND (MESSAGES) ================= */}
-                  {activeStep === 5 && (
+                  {/* ================= STEP 07: INSTANT ESTIMATOR TOOL ================= */}
+                  {activeStep === 6 && (
+                    <div className="h-full flex flex-col justify-between pt-11 pb-2 bg-white animate-fadeIn overflow-hidden">
+                      {/* Header */}
+                      <div className="flex items-center justify-between px-4 pb-2 border-b border-gray-100">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
+                            IE
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-black leading-tight">
+                              Instant Estimator
+                            </div>
+                            <span className="text-[9px] text-gray-400 leading-tight">AI Measurement & Scope</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1.5 bg-blue-50 border border-blue-200/80 px-2 py-0.5 rounded-full">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+                          <span className="text-[9px] text-blue-700 font-mono font-medium">2 Min Quote</span>
+                        </div>
+                      </div>
+
+                      {/* Image Preview Container */}
+                      <div className="relative w-full flex-1 overflow-hidden bg-[#0d0f14] flex items-center justify-center">
+                        <img
+                          src="https://res.cloudinary.com/diwxs2xe8/image/upload/v1793027629/Image_26-10-2026_at_16.13_xolnzb.jpg"
+                          alt="Instant Estimator Tool - 2 minute estimates"
+                          className="w-full h-full object-cover object-top select-none"
+                          loading="eager"
+                        />
+                      </div>
+
+                      {/* Bottom Action Pill */}
+                      <div className="px-3 pt-2 pb-1">
+                        <div className="bg-gray-50 rounded-xl p-2.5 flex items-center justify-between border border-gray-200/80 shadow-xs">
+                          <div>
+                            <div className="text-[11px] font-bold text-black leading-tight">
+                              Automated Scope & Price
+                            </div>
+                            <div className="text-[9px] text-gray-500 leading-tight">
+                              Sent to homeowner in 2 minutes
+                            </div>
+                          </div>
+                          <span className="text-[10px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">
+                            Generated
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ================= STEP 08: REMIND (MESSAGES) ================= */}
+                  {activeStep === 7 && (
                     <div className="h-full flex flex-col justify-between pt-12 pb-5 px-4 animate-fadeIn text-black">
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
@@ -1060,6 +1200,60 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
         <ClientRevenueCalculator onOpenQuiz={onOpenQuiz} />
 
       </div>
+
+      {/* Fullscreen Lightbox Modal for GEO Case Study */}
+      {geoModalOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn"
+          onClick={() => setGeoModalOpen(false)}
+        >
+          <div 
+            className="relative max-w-2xl w-full max-h-[92vh] bg-[#0c0d14] rounded-2xl border border-white/20 shadow-2xl flex flex-col overflow-hidden animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-[#12131c]">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#10a37f] animate-pulse" />
+                <div className="flex flex-col">
+                  <span className="text-xs sm:text-sm font-bold text-white leading-tight">
+                    Generative Engine Optimisation (GEO) Case Study
+                  </span>
+                  <span className="text-[10px] text-gray-400">
+                    ChatGPT Search Rank #1 • Attic Insulation in Salt Lake City
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => setGeoModalOpen(false)}
+                className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Image Body with smooth vertical scroll */}
+            <div className="flex-1 overflow-y-auto p-3 sm:p-5 flex items-center justify-center bg-black/90">
+              <img
+                src="/geo_chatgpt_ranking.jpg"
+                alt="Generative Engine Optimisation Case Study - High Resolution"
+                className="w-full max-w-xl h-auto rounded-lg shadow-2xl border border-white/10"
+              />
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-4 py-2.5 border-t border-white/10 bg-[#12131c] flex items-center justify-between text-xs text-gray-400">
+              <span className="truncate max-w-[260px] sm:max-w-none">
+                AI Citation: "SLC Connections LLC — 5.0/5 (58 reviews)"
+              </span>
+              <span className="text-emerald-400 font-semibold flex items-center gap-1 shrink-0">
+                <CheckCircle2 className="w-3.5 h-3.5" /> First Recommendation
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

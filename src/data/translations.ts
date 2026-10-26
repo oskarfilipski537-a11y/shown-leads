@@ -71,7 +71,7 @@ export const TRANSLATIONS = {
 
     // Hero
     heroHeadlinePart1: 'WE GENERATE, QUALIFY, CALL, BOOK THE ESTIMATE, AND MAKE SURE THEY SHOW UP. YOU ONLY ',
-    heroHeadlineSpan: 'PAY PER ESTIMATE',
+    heroHeadlineSpan: 'PAY PER SHOWN ESTIMATE',
     heroSubhead: 'ShownLeads delivers guaranteed, pre-qualified in-home and on-site estimate appointments for home improvement companies across Ireland, the United States, and the United Kingdom. You only pay per estimate when a vetted homeowner actually sits down with your team—zero monthly retainers, zero wasted ad spend, and zero empty clicks. If they cancel or no-show, you owe $0.',
     heroBtnQualify: 'see if you qualify',
     heroBtnSpecialist: 'talk to a specialist',
@@ -703,7 +703,7 @@ export const TRANSLATIONS = {
 
     // Hero
     heroHeadlinePart1: 'GENERAMOS, CALIFICAMOS, LLAMAMOS, AGENDAMOS EL PRESUPUESTO Y ASEGURAMOS QUE ASISTAN. SOLO ',
-    heroHeadlineSpan: 'PAGAS POR PRESUPUESTO',
+    heroHeadlineSpan: 'PAGAS POR PRESUPUESTO REALIZADO',
     heroSubhead: 'ShownLeads ofrece visitas de presupuesto a domicilio garantizadas y precalificadas para empresas de reformas del hogar. Solo pagas por presupuesto cuando un propietario verificado se sienta con tu equipo—sin cuotas mensuales, sin gasto publicitario desperdiciado y sin clics vacíos. Si cancelan o no asisten, pagas 0€.',
     heroBtnQualify: 'descubre si calificas',
     heroBtnSpecialist: 'habla con un especialista',
