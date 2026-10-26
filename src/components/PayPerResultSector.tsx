@@ -649,61 +649,62 @@ export const PayPerResultSector: React.FC<PayPerResultSectorProps> = ({ onOpenQu
 
                   {/* ================= STEP 02: GENERATIVE ENGINE OPTIMISATION ================= */}
                   {activeStep === 1 && (
-                    <div className="h-full flex flex-col justify-between pt-10 pb-2 bg-[#000000] animate-fadeIn overflow-hidden text-white select-none">
-                      {/* Company / Tool Header */}
-                      <div className="flex items-center justify-between px-3.5 pb-2 border-b border-white/10 bg-[#0a0a0f]">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#10a37f] to-[#1a7f64] text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
+                    <div className="h-full flex flex-col justify-between pt-9 pb-2 bg-[#000000] animate-fadeIn overflow-hidden text-white select-none">
+                      {/* Slim Top Header */}
+                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-white/10 bg-[#0a0a0f] shrink-0">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#10a37f] to-[#1a7f64] text-white flex items-center justify-center text-[9px] font-bold shadow-xs">
                             AI
                           </div>
-                          <div>
-                            <div className="text-[11px] font-bold text-white leading-tight flex items-center gap-1.5">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[11px] font-bold text-white leading-tight">
                               ChatGPT Search
-                              <span className="text-[8px] px-1.5 py-0.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full font-mono font-medium">Rank #1</span>
-                            </div>
-                            <span className="text-[9px] text-gray-400 leading-tight">Generative Engine Optimisation</span>
+                            </span>
+                            <span className="text-[8px] px-1.5 py-0.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full font-mono font-medium">
+                              Rank #1
+                            </span>
                           </div>
                         </div>
                         <button
                           onClick={() => setGeoModalOpen(true)}
                           className="flex items-center gap-1 bg-white/10 hover:bg-white/20 text-white/90 border border-white/15 px-2 py-0.5 rounded-full text-[9px] font-medium transition-colors cursor-pointer"
-                          title="View full size"
+                          title="View full size lightbox"
                         >
-                          <Maximize2 className="w-2.5 h-2.5" />
-                          <span>Expand</span>
+                          <Maximize2 className="w-2.5 h-2.5 text-[#2aff2a]" />
+                          <span>Full View</span>
                         </button>
                       </div>
 
-                      {/* Image Preview Container - 100% visible width, scrollable so zero text is cut off */}
-                      <div className="relative w-full flex-1 overflow-y-auto overflow-x-hidden no-scrollbar bg-black flex flex-col items-center justify-start py-1">
+                      {/* Image Screen Area: 100% OF IMAGE FITS IN VIEWPORT WITHOUT CROPPING */}
+                      <div className="relative w-full flex-1 min-h-0 flex items-center justify-center p-1.5 overflow-hidden bg-black">
                         <div 
                           onClick={() => setGeoModalOpen(true)}
-                          className="relative w-full group cursor-pointer px-1"
+                          className="relative w-full h-full flex items-center justify-center group cursor-pointer"
                         >
                           <img
                             src="/geo_chatgpt_ranking.jpg"
                             alt="Generative Engine Optimisation - Ranking on AI Tools"
-                            className="w-full h-auto object-contain rounded-md select-none transition-transform duration-200 group-hover:scale-[1.01]"
+                            className="max-h-full max-w-full w-auto h-auto object-contain rounded-md select-none drop-shadow-2xl transition-transform duration-200 group-hover:scale-[1.01]"
                             loading="eager"
                           />
-                          {/* Subtle hint banner */}
-                          <div className="absolute top-2 right-2.5 opacity-90 group-hover:opacity-100 transition-opacity pointer-events-none">
+                          {/* Floating interactive hint overlay */}
+                          <div className="absolute top-2 right-2 opacity-90 group-hover:opacity-100 transition-opacity pointer-events-none">
                             <span className="bg-black/80 backdrop-blur-md text-white text-[8px] px-2 py-0.5 rounded-full border border-white/20 flex items-center gap-1 shadow-md">
-                              <Maximize2 className="w-2.5 h-2.5 text-[#2aff2a]" /> Tap to enlarge
+                              <Maximize2 className="w-2 h-2 text-[#2aff2a]" /> Tap to enlarge
                             </span>
                           </div>
                         </div>
                       </div>
 
-                      {/* Bottom Context Pill */}
-                      <div className="px-2.5 pt-1.5 pb-0.5">
-                        <div className="bg-[#111218] rounded-xl p-2 flex items-center justify-between border border-white/10 shadow-xs">
+                      {/* Slim Bottom Context Pill */}
+                      <div className="px-2.5 pt-1 pb-0.5 shrink-0">
+                        <div className="bg-[#111218] rounded-xl px-2.5 py-1.5 flex items-center justify-between border border-white/10 shadow-xs">
                           <div>
                             <div className="text-[10px] font-bold text-white leading-tight">
                               AI Tool Recommendation
                             </div>
                             <div className="text-[8.5px] text-gray-400 leading-tight">
-                              ChatGPT recommends contractor first
+                              ChatGPT cites SLC Connections LLC as #1 option
                             </div>
                           </div>
                           <span className="text-[9px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-md border border-emerald-500/30">
